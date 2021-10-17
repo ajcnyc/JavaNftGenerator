@@ -2,7 +2,7 @@ package javaNftGenerator;
 
 import javafx.scene.image.Image;
 
-public class Component { 
+public class Component {
 
 	private String name_;
 	private Image image_;
