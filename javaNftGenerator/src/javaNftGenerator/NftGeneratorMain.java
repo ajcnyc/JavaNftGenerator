@@ -12,10 +12,9 @@ public class NftGeneratorMain extends Application {
 	}
 
 	public void start(Stage stage) {
-		// 1000 x 1000 pixels is strongly recommended for all your images, 
-		// consistent image size is required
+		// Consistent image size is required
 		NftGenerator generator = new NftGenerator(new File("components"), new File("output"));
-		generator.generate();
+		generator.generate(10);
 		System.exit(0);
 	}
 
