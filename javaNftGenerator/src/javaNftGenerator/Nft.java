@@ -29,7 +29,6 @@ public class Nft {
 	}
 	
 	public Image draw() {
-		long start = System.currentTimeMillis();
 		ArrayList<Component> components = sortByLayers(components_.values());
 		ArrayList<Color[][]> pixels = componentsToPixels(components);
 
@@ -47,7 +46,6 @@ public class Nft {
 			}
 		}
 		Image finishedImage = ImageTools.makeImage(finishedPixels);
-		System.out.println("Took: "+(System.currentTimeMillis()-start));
 		return finishedImage;
 	}
 

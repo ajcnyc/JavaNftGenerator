@@ -33,5 +33,13 @@ public class Component {
 	public int getRarity() {
 		return rarity_;
 	}
+	
+	public boolean matches(Component component) {
+		if(name_.equals(component.getName())) {
+			return true;
+		} else {
+			return false;
+		}
+	}
 
 }
