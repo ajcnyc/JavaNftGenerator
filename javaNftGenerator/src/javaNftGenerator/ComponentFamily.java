@@ -29,10 +29,9 @@ public class ComponentFamily {
 		HashSet<Component> components = new HashSet<Component>();
 		File[] imageFiles = familyRoot.listFiles();
 		for (int i = 0; i < imageFiles.length; i++) {
-			Image image = new Image("file:" + imageFiles[i].getAbsolutePath());
 			String name = getName(imageFiles[i].getName());
 			int rarity = getRarity(imageFiles[i].getName());
-			components.add(new Component(name, image, layer, rarity));
+			components.add(new Component(name, imageFiles[i], layer, rarity));
 		}
 
 		componentType_ = componentType;

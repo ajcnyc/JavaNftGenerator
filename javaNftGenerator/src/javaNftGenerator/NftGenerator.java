@@ -32,11 +32,8 @@ public class NftGenerator {
 			ComponentFamily family = families.get(i);
 			componentMap.put(family.getComponentType(), family.select());
 		}
+		
 		Nft nft = new Nft(componentMap);
-		for (String key : componentMap.keySet()) {
-			Component component = componentMap.get(key);
-			System.out.println(key + ": " + component.getName());
-		}
 		Image nftImage = nft.draw();
 		return nftImage;
 	}

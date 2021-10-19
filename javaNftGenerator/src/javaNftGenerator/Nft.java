@@ -28,17 +28,54 @@ public class Nft {
 		return true;
 	}
 
-	public Image draw() {		
+//	public Image draw() {
+//		ArrayList<Component> components = sortByLayers(components_.values());
+//		// TODO: parameters for size
+//		SimpleColor[][] finishedPixels = new SimpleColor[2350][2350];
+//
+//		for (int compNum = 0; compNum < components.size(); compNum++) {
+//			// pixels = componentToPixels(components.get(compNum));
+//			Component component = components.get(compNum);
+//			Image img = new Image("file:" + component.getImageFile().getAbsolutePath());
+//			// loop through each pixel position
+//			for (int i = 0; i < finishedPixels.length; i++) {
+//				for (int j = 0; j < finishedPixels[0].length; j++) {
+//					//System.out.println(i + "," + j);
+//					Color pixel = ImageTools.getPixelColor(img, i, j);
+//					if (pixel.getOpacity() > 0.0) {
+//						finishedPixels[i][j] = new SimpleColor(pixel.getRed(), pixel.getGreen(), pixel.getBlue(),
+//								pixel.getOpacity());
+//					}
+//				}
+//			}
+//		}
+//		Image finishedImage = ImageTools.makeImage(finishedPixels);
+//		return finishedImage;
+//	}
+
+//	private Color[][] componentToPixels(Component component) {
+//		Image image = new Image("file:" + component.getImageFile().getAbsolutePath());
+//		Color[][] pix = ImageTools.getAllPixelColors(image);
+//		ImageTools.get
+//		image=null;
+//		return pix;
+//	}
+
+	
+	
+	
+	public Image draw() {
+		long start = System.currentTimeMillis();
 		ArrayList<Component> components = sortByLayers(components_.values());
 		ArrayList<Color[][]> pixels = componentsToPixels(components);
-		
+
 		Color[][] finishedPixels = new Color[pixels.get(0).length][pixels.get(0)[0].length];
-		
+
 		// loop through each pixel position
 		for (int i = 0; i < pixels.get(0).length; i++) {
-			for (int j = 0; j <pixels.get(0)[0].length ; j++) { 
+			for (int j = 0; j < pixels.get(0)[0].length; j++) {
 				for (int k = 0; k < pixels.size(); k++) { // loop through each image
-					if (pixels.get(k)[i][j].getOpacity() > 0.0) { 
+					if (pixels.get(k)[i][j].getOpacity() > 0.0) {
 						finishedPixels[i][j] = pixels.get(k)[i][j];
 						break;
 					}
@@ -46,13 +83,15 @@ public class Nft {
 			}
 		}
 		Image finishedImage = ImageTools.makeImage(finishedPixels);
+		System.out.println("Took: "+(System.currentTimeMillis()-start));
 		return finishedImage;
 	}
 
 	private ArrayList<Color[][]> componentsToPixels(ArrayList<Component> components) {
 		ArrayList<Color[][]> pixels = new ArrayList<Color[][]>();
 		for (int i = 0; i < components.size(); i++) {
-			Color[][] pix = ImageTools.getAllPixelColors(components.get(i).getImage());
+			Image image = new Image("file:" + components.get(i).getImageFile().getAbsolutePath());
+			Color[][] pix = ImageTools.getAllPixelColors(image);
 			pixels.add(pix);
 		}
 		return pixels;

@@ -76,6 +76,26 @@ public class ImageTools {
 	}
 
 	/**
+	 * Constructs an image from the given array of pixel colors
+	 * 
+	 * @param pixels
+	 *          The array of SimpleColors representing all the pixels
+	 * @return An image created from the given array
+	 */
+	public static Image makeImage ( SimpleColor[][] pixels ) {
+		WritableImage wi = new WritableImage(pixels[0].length,pixels.length);
+		PixelWriter pw = wi.getPixelWriter();
+		for ( int i = 0 ; i < pixels.length ; i++ ) {
+			for ( int j = 0 ; j < pixels[i].length ; j++ ) {
+				SimpleColor simple = pixels[i][j];
+				pw.setColor(j,i,new Color(simple.red_,simple.green_,simple.blue_,simple.opacity_));
+			}
+		}
+		Image image = (Image) wi;
+		return image;
+	}
+	
+	/**
 	 * Saves the provided image to the given save file with the given file format
 	 * 
 	 * @param image

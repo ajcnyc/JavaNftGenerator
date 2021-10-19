@@ -1,17 +1,19 @@
 package javaNftGenerator;
 
+import java.io.File;
+
 import javafx.scene.image.Image;
 
 public class Component {
 
 	private String name_;
-	private Image image_;
+	private File imageFile_;
 	private int layer_;
 	private int rarity_;
 
-	public Component(String name, Image image, int layer, int rarity) {
+	public Component(String name, File imageFile, int layer, int rarity) {
 		name_ = name;
-		image_ = image;
+		imageFile_ = imageFile;
 		layer_ = layer;
 		rarity_ = rarity;
 	}
@@ -20,8 +22,8 @@ public class Component {
 		return name_;
 	}
 
-	public Image getImage() {
-		return image_;
+	public File getImageFile() {
+		return imageFile_;
 	}
 
 	public int getLayer() {
