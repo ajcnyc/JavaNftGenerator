@@ -41,6 +41,7 @@ public class ComponentFamily {
 	}
 
 	private String getName(String imageFileName) {
+		//System.out.println(imageFileName); // uncomment to check for bad file names
 		String name = imageFileName.replace(".png", "");
 		String[] nameParts = name.split("_");
 		return nameParts[nameParts.length - 2];

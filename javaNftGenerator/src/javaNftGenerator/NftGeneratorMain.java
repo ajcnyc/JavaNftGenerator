@@ -14,7 +14,7 @@ public class NftGeneratorMain extends Application {
 	public void start(Stage stage) {
 		// Consistent image size is required
 		NftGenerator generator = new NftGenerator(new File("components"), new File("output"));
-		generator.generateWithRepetitions(50);
+		generator.generateUnique(100);
 		System.exit(0);
 	}
 

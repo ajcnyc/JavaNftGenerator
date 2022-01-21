@@ -31,16 +31,28 @@ public class Nft {
 	public Image draw() {
 		ArrayList<Component> components = sortByLayers(components_.values());
 		ArrayList<Color[][]> pixels = componentsToPixels(components);
+		
+		for(int i=0; i<components.size(); i++) {
+			System.out.println(components.get(i).getName());
+		}
 
 		Color[][] finishedPixels = new Color[pixels.get(0).length][pixels.get(0)[0].length];
 
+		
+		
 		// loop through each pixel position
 		for (int i = 0; i < pixels.get(0).length; i++) {
 			for (int j = 0; j < pixels.get(0)[0].length; j++) {
+				boolean unsetPixel = true;
 				for (int k = 0; k < pixels.size(); k++) { // loop through each image
 					if (pixels.get(k)[i][j].getOpacity() > 0.0) {
 						finishedPixels[i][j] = pixels.get(k)[i][j];
+						unsetPixel = false;
 						break;
+					}
+					if(k == pixels.size()-1 && unsetPixel) {
+						finishedPixels[i][j] = new Color(0,0,0,0);
+						unsetPixel = false;
 					}
 				}
 			}
